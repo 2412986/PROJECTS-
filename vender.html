@@ -1,165 +1,414 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vende la ropa de tu clóset sin complicaciones — VUELTA Lima</title>
-  <meta name="description" content="Publica la ropa de tu clóset en Lima con VUELTA. Nos encargamos de la tasación sugerida y facilitamos las ventas.">
-  <style>
-    :root {
-      --color-cream: #F5F0E7;
-      --color-olive: #465443;
-      --color-olive-dark: #2D372B;
-      --color-salvia-light: #E4E8DF;
-      --color-terracotta: #C87558;
-      --color-near-black: #1E1F1A;
-      --color-warm-white: #FFFCF7;
-      --color-warm-gray: #4A473F; /* Mayor contraste para legibilidad premium */
-      --color-border: rgba(37, 38, 32, 0.12);
-      
-      --font-serif: "Playfair Display", "Georgia", serif;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-
-      --radius-md: 10px;
-      --radius-lg: 18px;
-      --radius-pill: 9999px;
-      --shadow-card: 0 6px 20px rgba(37, 38, 32, 0.05);
-      --shadow-hover: 0 10px 28px rgba(37, 38, 32, 0.09);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font-sans); background-color: var(--color-cream); color: var(--color-near-black); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
-
-    h1, h2, h3 { font-family: var(--font-serif); color: var(--color-olive-dark); font-weight: 600; line-height: 1.25; }
-    .container { width: 100%; max-width: 920px; margin: 0 auto; padding: 0 1.5rem; }
-
-    .site-header { background-color: rgba(245, 240, 231, 0.96); border-bottom: 1px solid var(--color-border); padding: 1rem 0; }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; }
-    .brand-name { font-family: var(--font-serif); font-size: 2.2rem; color: var(--color-olive); font-weight: 700; text-decoration: none; letter-spacing: -0.03em; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VENDEDORAS | VUELTA - Moda Circular en Lima</title>
     
-    .hero-seller { padding: 4rem 0 2rem; text-align: center; }
-    .hero-seller h1 { font-size: 2.9rem; margin-bottom: 1.2rem; color: var(--color-olive-dark); letter-spacing: -0.02em; }
-    .hero-seller p { font-size: 1.18rem; color: var(--color-warm-gray); margin-bottom: 2rem; max-width: 720px; margin-left: auto; margin-right: auto; }
-
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.8rem; margin: 2.5rem 0; }
-    .feature-card { background-color: var(--color-warm-white); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 2rem; text-align: left; box-shadow: var(--shadow-card); }
-    .feature-card h3 { font-size: 1.25rem; margin-bottom: 0.6rem; color: var(--color-olive); }
-    .feature-card p { font-size: 0.95rem; color: var(--color-warm-gray); }
-
-    .lead-box-seller { background-color: var(--color-warm-white); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 3rem 2.2rem; text-align: center; margin: 3rem 0; box-shadow: var(--shadow-hover); }
-    .form-group { margin-bottom: 1.4rem; text-align: left; }
-    .form-group label { display: block; font-weight: 600; margin-bottom: 0.45rem; font-size: 0.92rem; color: var(--color-olive-dark); }
-    .form-control { width: 100%; padding: 0.85rem 1.1rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); font-size: 1rem; background-color: var(--color-cream-light); outline: none; }
-    .form-control:focus { border-color: var(--color-olive); background-color: #FFF; }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    .btn-seller-cta { width: 100%; background-color: var(--color-olive); color: #FFF; padding: 1rem; border-radius: var(--radius-md); font-size: 1.1rem; font-weight: 700; border: none; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-card); }
-    .btn-seller-cta:hover { background-color: var(--color-olive-dark); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    .site-footer { background-color: var(--color-near-black); color: rgba(255,255,255,0.6); padding: 2.5rem 0; text-align: center; font-size: 0.85rem; margin-top: auto; }
-  </style>
+    <style>
+        :root {
+            --bg-cream: #F9F8F3;
+            --olive-dark: #3D4A3E;
+            --olive-hover: #2C362D;
+            --terracotta: #C86D51;
+            --text-main: #1C1C1C;
+            --text-muted: #666666;
+            --card-bg: #FFFFFF;
+            --border-light: #EAE8E1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Bar Subtil */
+        .academic-notice {
+            background-color: var(--olive-dark);
+            color: #E2E8F0;
+            text-align: center;
+            padding: 6px 16px;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Navbar Unificada */
+        header {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--olive-dark);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-btn {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--olive-dark);
+            text-decoration: none;
+            padding: 8px 18px;
+            border: 1px solid var(--olive-dark);
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--olive-dark);
+            color: #FFF;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 20px 60px;
+        }
+
+        /* Hero Section Vendedoras */
+        .hero {
+            text-align: center;
+            padding: 40px 0 50px;
+        }
+
+        .pill-badge {
+            display: inline-block;
+            background-color: var(--terracotta);
+            color: #FFFFFF;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-scroll-btn {
+            background-color: var(--olive-dark);
+            color: #FFF;
+            padding: 14px 28px;
+            border-radius: 24px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+
+        .cta-scroll-btn:hover {
+            background-color: var(--olive-hover);
+        }
+
+        /* Seccion: Como Funciona (Estilo Pasos) */
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--olive-dark);
+        }
+
+        .how-it-works {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px 24px;
+            border: 1px solid var(--border-light);
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--bg-cream);
+            color: var(--olive-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 16px;
+            border: 1px solid var(--border-light);
+        }
+
+        .step-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .step-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Seccion Formulario (Caja Oscura Unificada) */
+        .form-section {
+            background-color: var(--olive-dark);
+            color: #FFF;
+            border-radius: 20px;
+            padding: 48px 36px;
+            max-width: 650px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .form-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .form-section p.subtitle {
+            text-align: center;
+            color: #CBD5E1;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #F1F5F9;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: 1px solid #4A584B;
+            background-color: #FFF;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--terracotta);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--terracotta);
+            color: #FFF;
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #B55C42;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.99);
+        }
+
+        #form-status {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Footer Unificado */
+        footer {
+            background-color: #1A1A1A;
+            color: #888;
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 0.8rem;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.1rem; }
+            .form-section { padding: 30px 20px; }
+        }
+    </style>
 </head>
 <body>
 
-  <header class="site-header">
+    <div class="academic-notice">PROTOTIPO ACADÉMICO SMOKE TEST – Captación de Oferta VUELTA en Lima</div>
+
+    <header>
+        <a href="index.html" class="logo">vuelta</a>
+        <a href="index.html" class="nav-btn">Ver Catálogo de Compras</a>
+    </header>
+
     <div class="container">
-      <div class="header-inner">
-        <a href="index.html" class="brand-name">vuelta</a>
-        <a href="index.html" style="font-size: 0.88rem; color: var(--color-olive); font-weight: 600;">Ver Catálogo de Compras</a>
-      </div>
+        
+        <!-- Hero -->
+        <section class="hero">
+            <span class="pill-badge">OPCIÓN PARA VENDEDORAS · LIMA</span>
+            <h1>Vender la ropa de tu clóset no<br>debería sentirse como otro trabajo</h1>
+            <p>Te sugerimos el precio justo para tus prendas en Lima y facilitamos las medidas técnicas para que vendas sin responder cientos de mensajes.</p>
+            <a href="#registro-form" class="cta-scroll-btn">Quiero vender mis prendas</a>
+        </section>
+
+        <!-- Pasos / Como funciona -->
+        <h2 class="section-title">¿Cómo funciona VUELTA?</h2>
+        <section class="how-it-works">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Tasación Sugerida en Lima</h3>
+                <p>Te sugerimos un rango de precio justo según la marca, material y estado real de tu prenda.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Sin preguntas de medidas</h3>
+                <p>Guiamos la toma de centímetros clave (busto, cintura, cadera) para que la compradora no dude.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Coordinación por WhatsApp</h3>
+                <p>Te notificamos directamente cuando una compradora esté lista para solicitar tu prenda.</p>
+            </div>
+        </section>
+
+        <!-- Formulario estilo tarjeta oscura (Igual al de compradoras) -->
+        <section class="form-section" id="registro-form">
+            <h2>Darle una segunda VUELTA a tu clóset</h2>
+            <p class="subtitle">Déjanos tu WhatsApp y te contactaremos para ayudarte a publicar tus primeras 3 prendas.</p>
+            
+            <form id="sellerLeadForm">
+                <div class="form-group">
+                    <label for="sellerName">Tu Nombre</label>
+                    <input type="text" id="sellerName" placeholder="Ej. Camila Rodríguez" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sellerPhone">Número de WhatsApp</label>
+                    <input type="tel" id="sellerPhone" placeholder="Ej. 987654321" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="itemCount">¿Cuántas prendas te gustaría vender aproximadamente?</label>
+                    <select id="itemCount">
+                        <option value="1 a 5 prendas">De 1 a 5 prendas</option>
+                        <option value="6 a 15 prendas">De 6 a 15 prendas</option>
+                        <option value="Más de 15 prendas">Más de 15 prendas (Clóset Sale)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Solicitar contacto para vender</button>
+                <div id="form-status"></div>
+            </form>
+        </section>
+
     </div>
-  </header>
 
-  <main class="container">
-    <section class="hero-seller">
-      <h1>Vender la ropa de tu clóset no debería sentirse como otro trabajo</h1>
-      <p>En VUELTA te sugerimos el precio justo para tus prendas en Lima y facilitamos el proceso de venta sin responder cientos de mensajes.</p>
-    </section>
+    <footer>
+        © 2026 VUELTA — Captación de Oferta · Validación de Tesis en Lima Metropolitana.
+    </footer>
 
-    <section class="features-grid">
-      <div class="feature-card">
-        <h3>Tasación Sugerida en Lima</h3>
-        <p>Te sugerimos un rango de precio justo según la marca, material y estado real de tu prenda.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Sin preguntas de medidas</h3>
-        <p>Guiamos la toma de centímetros clave para que la compradora no dude sobre si le va a calzar.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Coordinación por WhatsApp</h3>
-        <p>Te notificamos directamente al celular cuando una compradora esté lista para solicitar tu prenda.</p>
-      </div>
-    </section>
+    <!-- Logica Supabase Integrada -->
+    <script>
+        const SUPABASE_URL = "https://hecbefeahljpvvpetkvo.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhlY2JlZmVhaGxqcHZ2cGV0a3ZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE0TQ1ODYSInV4CCI6MjEwDYzMDU4Nn0.ej3uZ8MYSAajTK0yA7yEXSX0TZzIhLZIJL10lpaydpc";
 
-    <section class="lead-box-seller">
-      <h2 style="margin-bottom: 0.6rem; font-size: 1.9rem;">Darle una segunda VUELTA a tu clóset</h2>
-      <p style="color: var(--color-warm-gray); margin-bottom: 2rem; font-size: 0.98rem;">Déjanos tu WhatsApp y te contactaremos para ayudarte a publicar tus primeras 3 prendas.</p>
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-      <form id="sellerLeadForm">
-        <div class="form-group">
-          <label for="sellerName">Tu Nombre</label>
-          <input type="text" id="sellerName" class="form-control" placeholder="Ej. Camila Rodríguez" required>
-        </div>
+        const sellerForm = document.getElementById('sellerLeadForm');
+        const statusDiv = document.getElementById('form-status');
 
-        <div class="form-group">
-          <label for="sellerWhatsapp">Número de WhatsApp</label>
-          <input type="tel" id="sellerWhatsapp" class="form-control" placeholder="Ej. 987654321" required>
-        </div>
+        sellerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('sellerName').value.trim();
+            const phone = document.getElementById('sellerPhone').value.trim();
+            const count = document.getElementById('itemCount').value;
 
-        <div class="form-group">
-          <label for="sellerVolume">¿Cuántas prendas te gustaría vender aproximadamente?</label>
-          <select id="sellerVolume" class="form-control" required>
-            <option value="1-5">De 1 a 5 prendas</option>
-            <option value="6-15">De 6 a 15 prendas</option>
-            <option value="16+">Más de 15 prendas (Limpieza de clóset)</option>
-          </select>
-        </div>
+            statusDiv.style.color = "#CBD5E1";
+            statusDiv.textContent = "Procesando registro...";
 
-        <button type="submit" class="btn-seller-cta">Solicitar contacto para vender</button>
-      </form>
-      <div id="sellerMsg" style="margin-top: 1.2rem; font-weight: 600; color: var(--color-olive); display: none;"></div>
-    </section>
-  </main>
+            try {
+                const { data, error } = await _supabase
+                    .from('leads')
+                    .insert([
+                        { 
+                            user_type: 'vendedora', 
+                            contact_info: `Nombre: ${name} | WA: ${phone} | Cantidad: ${count}` 
+                        }
+                    ]);
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2026 VUELTA — Captación de Oferta · Validación de Tesis en Lima Metropolitana.</p>
-    </div>
-  </footer>
+                if (error) throw error;
 
-  <!-- Script Supabase Integrado -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    const SUPABASE_URL = "https://hecbefeahljpvvpetkvo.supabase.co";
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhlY2JlZmVhaGxqcHZ2cGV0a3ZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwNTQ1ODYsImV4cCI6MjEwODYzMDU4Nn0.ej3uZ8MYSAajTKOyA7yEXSXOTzZIhLZIJLiOlpAydpc";
-    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                statusDiv.style.color = "#86EFAC";
+                statusDiv.textContent = "¡Gracias! Te contactaremos por WhatsApp pronto.";
+                sellerForm.reset();
 
-    document.getElementById('sellerLeadForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const name = document.getElementById('sellerName').value.trim();
-      const phone = document.getElementById('sellerWhatsapp').value.trim();
-      const volume = document.getElementById('sellerVolume').value;
-      const msg = document.getElementById('sellerMsg');
-
-      msg.style.display = 'block';
-      msg.textContent = 'Enviando...';
-
-      try {
-        const { error } = await _supabase.from('leads').insert([
-          { 
-            user_type: 'vendedora', 
-            contact_info: `${name} (${phone}) - Vol: ${volume}` 
-          }
-        ]);
-
-        if (error) throw error;
-
-        msg.textContent = '¡Gracias, ' + name + '! Te contactaremos por WhatsApp muy pronto.';
-        document.getElementById('sellerLeadForm').reset();
-      } catch (err) {
-        console.error(err);
-        msg.textContent = 'Solicitud registrada. ¡Gracias por querer vender en VUELTA!';
-      }
-    });
-  </script>
+            } catch (err) {
+                console.error('Error:', err);
+                statusDiv.style.color = "#FCA5A5";
+                statusDiv.textContent = "Hubo un error al guardar. Inténtalo de nuevo.";
+            }
+        });
+    </script>
 </body>
 </html>
