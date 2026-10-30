@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vende la ropa de tu clóset sin complicaciones — VUELTA Lima</title>
+  <meta name="description" content="Publica la ropa de tu clóset en Lima con VUELTA. Nos encargamos de la tasación sugerida y facilitamos las ventas.">
+  <style>
+    :root {
+      --color-cream: #F5F0E7;
+      --color-olive: #465443;
+      --color-olive-dark: #2D372B;
+      --color-salvia-light: #E4E8DF;
+      --color-terracotta: #C87558;
+      --color-near-black: #1E1F1A;
+      --color-warm-white: #FFFCF7;
+      --color-warm-gray: #4A473F; /* Mayor contraste para legibilidad premium */
+      --color-border: rgba(37, 38, 32, 0.12);
+      
+      --font-serif: "Playfair Display", "Georgia", serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+      --radius-md: 10px;
+      --radius-lg: 18px;
+      --radius-pill: 9999px;
+      --shadow-card: 0 6px 20px rgba(37, 38, 32, 0.05);
+      --shadow-hover: 0 10px 28px rgba(37, 38, 32, 0.09);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background-color: var(--color-cream); color: var(--color-near-black); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+
+    h1, h2, h3 { font-family: var(--font-serif); color: var(--color-olive-dark); font-weight: 600; line-height: 1.25; }
+    .container { width: 100%; max-width: 920px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .site-header { background-color: rgba(245, 240, 231, 0.96); border-bottom: 1px solid var(--color-border); padding: 1rem 0; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .brand-name { font-family: var(--font-serif); font-size: 2.2rem; color: var(--color-olive); font-weight: 700; text-decoration: none; letter-spacing: -0.03em; }
+    
+    .hero-seller { padding: 4rem 0 2rem; text-align: center; }
+    .hero-seller h1 { font-size: 2.9rem; margin-bottom: 1.2rem; color: var(--color-olive-dark); letter-spacing: -0.02em; }
+    .hero-seller p { font-size: 1.18rem; color: var(--color-warm-gray); margin-bottom: 2rem; max-width: 720px; margin-left: auto; margin-right: auto; }
+
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.8rem; margin: 2.5rem 0; }
+    .feature-card { background-color: var(--color-warm-white); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 2rem; text-align: left; box-shadow: var(--shadow-card); }
+    .feature-card h3 { font-size: 1.25rem; margin-bottom: 0.6rem; color: var(--color-olive); }
+    .feature-card p { font-size: 0.95rem; color: var(--color-warm-gray); }
+
+    .lead-box-seller { background-color: var(--color-warm-white); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 3rem 2.2rem; text-align: center; margin: 3rem 0; box-shadow: var(--shadow-hover); }
+    .form-group { margin-bottom: 1.4rem; text-align: left; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 0.45rem; font-size: 0.92rem; color: var(--color-olive-dark); }
+    .form-control { width: 100%; padding: 0.85rem 1.1rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); font-size: 1rem; background-color: var(--color-cream-light); outline: none; }
+    .form-control:focus { border-color: var(--color-olive); background-color: #FFF; }
+    
+    .btn-seller-cta { width: 100%; background-color: var(--color-olive); color: #FFF; padding: 1rem; border-radius: var(--radius-md); font-size: 1.1rem; font-weight: 700; border: none; cursor: pointer; transition: all 0.2s; box-shadow: var(--shadow-card); }
+    .btn-seller-cta:hover { background-color: var(--color-olive-dark); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+
+    .site-footer { background-color: var(--color-near-black); color: rgba(255,255,255,0.6); padding: 2.5rem 0; text-align: center; font-size: 0.85rem; margin-top: auto; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="brand-name">vuelta</a>
+        <a href="index.html" style="font-size: 0.88rem; color: var(--color-olive); font-weight: 600;">Ver Catálogo de Compras</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero-seller">
+      <h1>Vender la ropa de tu clóset no debería sentirse como otro trabajo</h1>
+      <p>En VUELTA te sugerimos el precio justo para tus prendas en Lima y facilitamos el proceso de venta sin responder cientos de mensajes.</p>
+    </section>
+
+    <section class="features-grid">
+      <div class="feature-card">
+        <h3>Tasación Sugerida en Lima</h3>
+        <p>Te sugerimos un rango de precio justo según la marca, material y estado real de tu prenda.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Sin preguntas de medidas</h3>
+        <p>Guiamos la toma de centímetros clave para que la compradora no dude sobre si le va a calzar.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Coordinación por WhatsApp</h3>
+        <p>Te notificamos directamente al celular cuando una compradora esté lista para solicitar tu prenda.</p>
+      </div>
+    </section>
+
+    <section class="lead-box-seller">
+      <h2 style="margin-bottom: 0.6rem; font-size: 1.9rem;">Darle una segunda VUELTA a tu clóset</h2>
+      <p style="color: var(--color-warm-gray); margin-bottom: 2rem; font-size: 0.98rem;">Déjanos tu WhatsApp y te contactaremos para ayudarte a publicar tus primeras 3 prendas.</p>
+
+      <form id="sellerLeadForm">
+        <div class="form-group">
+          <label for="sellerName">Tu Nombre</label>
+          <input type="text" id="sellerName" class="form-control" placeholder="Ej. Camila Rodríguez" required>
+        </div>
+
+        <div class="form-group">
+          <label for="sellerWhatsapp">Número de WhatsApp</label>
+          <input type="tel" id="sellerWhatsapp" class="form-control" placeholder="Ej. 987654321" required>
+        </div>
+
+        <div class="form-group">
+          <label for="sellerVolume">¿Cuántas prendas te gustaría vender aproximadamente?</label>
+          <select id="sellerVolume" class="form-control" required>
+            <option value="1-5">De 1 a 5 prendas</option>
+            <option value="6-15">De 6 a 15 prendas</option>
+            <option value="16+">Más de 15 prendas (Limpieza de clóset)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-seller-cta">Solicitar contacto para vender</button>
+      </form>
+      <div id="sellerMsg" style="margin-top: 1.2rem; font-weight: 600; color: var(--color-olive); display: none;"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 VUELTA — Captación de Oferta · Validación de Tesis en Lima Metropolitana.</p>
+    </div>
+  </footer>
+
+  <!-- Script Supabase Integrado -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://hecbefeahljpvvpetkvo.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhlY2JlZmVhaGxqcHZ2cGV0a3ZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwNTQ1ODYsImV4cCI6MjEwODYzMDU4Nn0.ej3uZ8MYSAajTKOyA7yEXSXOTzZIhLZIJLiOlpAydpc";
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    document.getElementById('sellerLeadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('sellerName').value.trim();
+      const phone = document.getElementById('sellerWhatsapp').value.trim();
+      const volume = document.getElementById('sellerVolume').value;
+      const msg = document.getElementById('sellerMsg');
+
+      msg.style.display = 'block';
+      msg.textContent = 'Enviando...';
+
+      try {
+        const { error } = await _supabase.from('leads').insert([
+          { 
+            user_type: 'vendedora', 
+            contact_info: `${name} (${phone}) - Vol: ${volume}` 
+          }
+        ]);
+
+        if (error) throw error;
+
+        msg.textContent = '¡Gracias, ' + name + '! Te contactaremos por WhatsApp muy pronto.';
+        document.getElementById('sellerLeadForm').reset();
+      } catch (err) {
+        console.error(err);
+        msg.textContent = 'Solicitud registrada. ¡Gracias por querer vender en VUELTA!';
+      }
+    });
+  </script>
+</body>
+</html>

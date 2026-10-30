@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VUELTA — Moda circular en Lima con medidas reales en cm</title>
+  <meta name="description" content="Encuentra ropa de segunda mano en Lima. Compara tus medidas corporales en cm antes de comprar en VUELTA.">
+  <style>
+    :root {
+      --color-cream: #F5F0E7;
+      --color-cream-light: #FAF6F0;
+      --color-olive: #465443;
+      --color-olive-dark: #2D372B;
+      --color-salvia: #A8B39A;
+      --color-salvia-light: #E4E8DF;
+      --color-terracotta: #C87558;
+      --color-terracotta-hover: #B56447;
+      --color-near-black: #1E1F1A;
+      --color-warm-white: #FFFCF7;
+      --color-warm-gray: #4A473F; /* Mayor contraste para legibilidad premium */
+      --color-border: rgba(37, 38, 32, 0.12);
+      
+      --font-serif: "Playfair Display", "Georgia", serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 18px;
+      --radius-pill: 9999px;
+      --shadow-card: 0 6px 20px rgba(37, 38, 32, 0.05);
+      --shadow-hover: 0 10px 28px rgba(37, 38, 32, 0.09);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; background-color: var(--color-cream); color: var(--color-near-black); }
+    body { font-family: var(--font-sans); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+
+    h1, h2, h3 { font-family: var(--font-serif); color: var(--color-olive-dark); font-weight: 600; line-height: 1.25; }
+    a { color: var(--color-olive); text-decoration: none; }
+    button { font-family: var(--font-sans); cursor: pointer; border: none; background: none; }
+
+    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .prototype-banner { background-color: var(--color-olive-dark); color: var(--color-cream); font-size: 0.78rem; padding: 0.55rem 1rem; text-align: center; }
+    .prototype-banner strong { color: var(--color-salvia); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .site-header { background-color: rgba(245, 240, 231, 0.96); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+    .brand-name { font-family: var(--font-serif); font-size: 2.2rem; color: var(--color-olive); font-weight: 700; letter-spacing: -0.03em; }
+    
+    .nav-link-seller { background-color: var(--color-salvia-light); color: var(--color-olive-dark); padding: 0.55rem 1.1rem; border-radius: var(--radius-pill); font-size: 0.85rem; font-weight: 600; border: 1px solid var(--color-olive); transition: all 0.2s; }
+    .nav-link-seller:hover { background-color: var(--color-olive); color: #FFF; }
+
+    .hero-buyer { padding: 4rem 0 3rem; text-align: center; }
+    .badge-secondhand { display: inline-block; background-color: var(--color-terracotta); color: #FFF; font-size: 0.78rem; font-weight: 700; padding: 0.4rem 1rem; border-radius: var(--radius-pill); text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 1.2rem; }
+    .hero-title { font-size: 3.2rem; margin-bottom: 1.2rem; color: var(--color-olive-dark); letter-spacing: -0.02em; }
+    .hero-lead { font-size: 1.18rem; color: var(--color-warm-gray); max-width: 680px; margin: 0 auto 2.2rem; font-weight: 400; }
+
+    .btn-hero-action { display: inline-block; background-color: var(--color-olive); color: #FFF; padding: 0.9rem 2rem; border-radius: var(--radius-pill); font-weight: 600; font-size: 1rem; box-shadow: var(--shadow-card); transition: all 0.2s; }
+    .btn-hero-action:hover { background-color: var(--color-olive-dark); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+
+    .catalog-section { padding: 3rem 0 4rem; }
+    .section-title-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .garment-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+    
+    .garment-card { background-color: var(--color-warm-white); border-radius: var(--radius-lg); border: 1px solid var(--color-border); overflow: hidden; box-shadow: var(--shadow-card); transition: all 0.25s ease; }
+    .garment-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .garment-card-visual { height: 230px; background-color: var(--color-cream-light); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(37,38,32,0.05); }
+    .garment-card-body { padding: 1.4rem; }
+    .card-title { font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-olive-dark); }
+    .card-cm-box { font-size: 0.82rem; background-color: var(--color-salvia-light); color: var(--color-olive-dark); padding: 0.45rem 0.7rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-weight: 600; }
+    .card-price-row { display: flex; justify-content: space-between; align-items: center; }
+    .card-price { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--color-olive); }
+
+    .lead-box { background-color: var(--color-olive-dark); color: var(--color-cream); border-radius: var(--radius-lg); padding: 3rem 2rem; text-align: center; margin: 4rem 0 2rem; box-shadow: var(--shadow-hover); }
+    .lead-box h2 { color: var(--color-cream); font-size: 2rem; margin-bottom: 0.8rem; }
+    .lead-form { display: flex; justify-content: center; gap: 0.8rem; max-width: 520px; margin: 1.8rem auto 0; flex-wrap: wrap; }
+    .lead-input { padding: 0.85rem 1.1rem; border-radius: var(--radius-md); border: 1px solid transparent; font-size: 0.98rem; flex: 1; min-width: 250px; outline: none; }
+    .lead-input:focus { border-color: var(--color-salvia); }
+    .btn-submit { background-color: var(--color-terracotta); color: #FFF; padding: 0.85rem 1.8rem; border-radius: var(--radius-md); font-weight: 600; font-size: 0.98rem; transition: all 0.2s; border: none; cursor: pointer; }
+    .btn-submit:hover { background-color: var(--color-terracotta-hover); transform: translateY(-1px); }
+
+    .site-footer { background-color: var(--color-near-black); color: rgba(255,255,255,0.6); padding: 2.5rem 0; text-align: center; font-size: 0.85rem; margin-top: auto; }
+  </style>
+</head>
+<body>
+
+  <aside class="prototype-banner">
+    <strong>Prototipo Académico Smoke Test</strong> — Catálogo VUELTA de moda circular en Lima Metropolitana.
+  </aside>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="brand-name">vuelta</a>
+        <a href="vender.html" class="nav-link-seller">¿Quieres vender tu ropa? Haz clic aquí</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-buyer">
+      <div class="container">
+        <span class="badge-secondhand">Ropa de Segunda Mano · Selección Lima</span>
+        <h1 class="hero-title">Dale una segunda VUELTA a prendas únicas con su medida real en cm</h1>
+        <p class="hero-lead">Compara el contorno de busto, cintura y cadera de cada prenda con tus medidas personales antes de comprar. Sin sorpresas de talla.</p>
+        <a href="#catalogo" class="btn-hero-action">Explorar Catálogo Disponible</a>
+      </div>
+    </section>
+
+    <section class="catalog-section" id="catalogo">
+      <div class="container">
+        <div class="section-title-row">
+          <div>
+            <h2>Catálogo Disponible</h2>
+            <p style="color: var(--color-warm-gray); font-size: 0.95rem;">Prendas con verificación técnica de medidas planas en cm</p>
+          </div>
+        </div>
+
+        <div class="garment-grid">
+          <article class="garment-card">
+            <div class="garment-card-visual">
+              <svg viewBox="0 0 160 180" width="130" height="150"><path d="M45,25 L65,15 L95,15 L115,25 L135,55 L115,65 L105,40 L105,145 L55,145 L55,40 L45,65 L25,55 Z" fill="#C87558" opacity="0.9"/></svg>
+            </div>
+            <div class="garment-card-body">
+              <h3 class="card-title">Blusa de lino terracota</h3>
+              <div class="card-cm-box">Busto: 98 cm · Largo: 58 cm</div>
+              <div class="card-price-row">
+                <span class="card-price">S/. 65</span>
+                <span style="font-size: 0.85rem; color: var(--color-warm-gray);">Surco</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="garment-card">
+            <div class="garment-card-visual">
+              <svg viewBox="0 0 160 180" width="130" height="150"><path d="M50,20 L110,20 L118,65 L106,160 L85,160 L80,75 L75,160 L54,160 L42,65 Z" fill="#4B6584"/></svg>
+            </div>
+            <div class="garment-card-body">
+              <h3 class="card-title">Jean Levi's 501 Vintage</h3>
+              <div class="card-cm-box">Cintura: 70 cm · Cadera: 94 cm</div>
+              <div class="card-price-row">
+                <span class="card-price">S/. 95</span>
+                <span style="font-size: 0.85rem; color: var(--color-warm-gray);">Miraflores</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="garment-card">
+            <div class="garment-card-visual">
+              <svg viewBox="0 0 160 180" width="130" height="150"><path d="M55,20 L70,15 L90,15 L105,20 L100,55 L125,155 L35,155 L60,55 Z" fill="#A8B39A"/></svg>
+            </div>
+            <div class="garment-card-body">
+              <h3 class="card-title">Vestido midi floral Mango</h3>
+              <div class="card-cm-box">Busto: 94 cm · Cintura: 76 cm</div>
+              <div class="card-price-row">
+                <span class="card-price">S/. 85</span>
+                <span style="font-size: 0.85rem; color: var(--color-warm-gray);">San Isidro</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="lead-box">
+          <h2>¿Quieres acceso anticipado al catálogo exclusivo?</h2>
+          <p style="color: var(--color-salvia-light); font-size: 0.98rem;">Registra tu correo para recibir alertas cuando ingresen prendas de tu talla exacta.</p>
+          <form class="lead-form" id="buyerLeadForm">
+            <input type="email" id="buyerEmail" class="lead-input" placeholder="Tu correo electrónico" required>
+            <button type="submit" class="btn-submit">Quiero probar VUELTA</button>
+          </form>
+          <div id="buyerMsg" style="margin-top: 1.2rem; font-weight: 600; color: var(--color-salvia-light); display: none;"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 VUELTA — Tesis de Maestría · Validación de Mercado en Lima Metropolitana.</p>
+    </div>
+  </footer>
+
+  <!-- Script Supabase Integrado -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://hecbefeahljpvvpetkvo.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhlY2JlZmVhaGxqcHZ2cGV0a3ZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwNTQ1ODYsImV4cCI6MjEwODYzMDU4Nn0.ej3uZ8MYSAajTKOyA7yEXSXOTzZIhLZIJLiOlpAydpc";
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    document.getElementById('buyerLeadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('buyerEmail').value.trim();
+      const msg = document.getElementById('buyerMsg');
+
+      msg.style.display = 'block';
+      msg.textContent = 'Enviando...';
+
+      try {
+        const { error } = await _supabase.from('leads').insert([
+          { user_type: 'compradora', contact_info: email }
+        ]);
+
+        if (error) throw error;
+
+        msg.textContent = '¡Gracias! Te avisaremos cuando publiquemos prendas de tu interés.';
+        document.getElementById('buyerLeadForm').reset();
+      } catch (err) {
+        console.error(err);
+        msg.textContent = 'Registro simulado recibido. ¡Gracias por participar!';
+      }
+    });
+  </script>
+</body>
+</html>
