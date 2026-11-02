@@ -103,77 +103,99 @@
   <main>
     <section class="hero-buyer">
       <div class="container">
-        <span class="badge-secondhand">Ropa de Segunda Mano · Selección Lima</span>
-        <h1 class="hero-title">Dale una segunda VUELTA a prendas únicas con su medida real en cm</h1>
-        <p class="hero-lead">Compara el contorno de busto, cintura y cadera de cada prenda con tus medidas personales antes de comprar. Sin sorpresas de talla.</p>
+        <span class="badge--secondhand">ROPA DE SEGUNDA MANO · SELECCIÓN LIMA</span>
+        <h1 class="hero-title">Dale una segunda VUELTA a prendas únicas con su medida real y estado verificado</h1>
+        <p class="hero-lead">Compara el contorno de busto, cintura y cadera de cada prenda con tus medidas personales. Además, revisa la valoración real de su estado físico en estrellas antes de comprar. Sin sorpresas de talla ni de condición.</p>
         <a href="#catalogo" class="btn-hero-action">Explorar Catálogo Disponible</a>
       </div>
     </section>
-
     <section class="catalog-section" id="catalogo">
       <div class="container">
-        <div class="section-title-row">
-          <div>
-            <h2>Catálogo Disponible</h2>
-            <p style="color: var(--color-warm-gray); font-size: 0.95rem;">Prendas con verificación técnica de medidas planas en cm</p>
-          </div>
+
+        <!-- Grilla de Tarjetas Alineada -->
+        <div class="garment-grid" style="margin-bottom: 3rem;">
+          
+          <!-- Tarjeta 1: Blusa -->
+          <article class="garment-card">
+            <div class="garment-card-visual" style="cursor: pointer;" onclick="abrirModal('Blusa.jpg')">
+              <img src="Blusa.jpg" alt="Blusa de lino terracota" style="width: 100%; height: 180px; object-fit: cover;">
+            </div>
+            <div class="garment-card-body">
+              <h3 class="card-title">Blusa de lino terracota</h3>
+              <div class="card-cm-box">Busto: 98 cm ┊ Largo: 58 cm</div>
+              
+              <!-- Valoración de Estado -->
+              <div style="font-size: 0.85rem; color: var(--color-olive); margin: 0.5rem 0; display: flex; align-items: center; gap: 0.4rem;">
+                <span style="color: #D4A373;">★★★★☆</span>
+                <span style="color: var(--color-warm-gray); font-size: 0.8rem;">(Estado: Muy Bueno)</span>
+              </div>
+
+              <div class="card-price-row">
+                <span class="card-price">S/. 65</span>
+                <span style="font-size: 0.85rem; color: var(--color-warm-gray);">Surco</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tarjeta 2: Jeans -->
+          <article class="garment-card">
+            <div class="garment-card-visual" style="cursor: pointer;" onclick="abrirModal('Jeans.jpg')">
+              <img src="Jeans.jpg" alt="Jean Levi's 501 Vintage" style="width: 100%; height: 180px; object-fit: cover;">
+            </div>
+            <div class="garment-card-body">
+              <h3 class="card-title">Jean Levi's 501 Vintage</h3>
+              <div class="card-cm-box">Cintura: 70 cm ┊ Cadera: 94 cm</div>
+              
+              <!-- Valoración de Estado -->
+              <div style="font-size: 0.85rem; color: var(--color-olive); margin: 0.5rem 0; display: flex; align-items: center; gap: 0.4rem;">
+                <span style="color: #D4A373;">★★★★☆</span>
+                <span style="color: var(--color-warm-gray); font-size: 0.8rem;">(Estado: Muy Bueno)</span>
+              </div>
+
+              <div class="card-price-row">
+                <span class="card-price">S/. 95</span>
+                <span style="font-size: 0.85rem; color: var(--color-warm-gray);">Miraflores</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3: Vestido -->
+          <article class="garment-card">
+            <div class="garment-card-visual" style="cursor: pointer;" onclick="abrirModal('Vestido.jpg')">
+              <img src="Vestido.jpg" alt="Vestido midi floral Mango" style="width: 100%; height: 180px; object-fit: cover;">
+            </div>
+            <div class="garment-card-body">
+              <h3 class="card-title">Vestido midi floral Mango</h3>
+              <div class="card-cm-box">Busto: 84 cm ┊ Cintura: 76 cm</div>
+              
+              <!-- Valoración de Estado -->
+              <div style="font-size: 0.85rem; color: var(--color-olive); margin: 0.5rem 0; display: flex; align-items: center; gap: 0.4rem;">
+                <span style="color: #D4A373;">★★★★☆</span>
+                <span style="color: var(--color-warm-gray); font-size: 0.8rem;">(Estado: Muy Bueno)</span>
+              </div>
+
+              <div class="card-price-row">
+                <span class="card-price">S/. 85</span>
+                <span style="font-size: 0.85rem; color: var(--color-warm-gray);">San Isidro</span>
+              </div>
+            </div>
+          </article>
         </div>
 
-        <div class="garment-grid">
-        <!-- Tarjeta 1: Blusa -->
-        <article class="garment-card">
-          <div class="garment-card-visual" style="cursor: pointer;" onclick="abrirModal('Blusa.jpg')">
-            <img src="Blusa.jpg" alt="Blusa de lino terracota" style="width: 100%; height: 180px; object-fit: cover;">
-          </div>
-          <div class="garment-card-body">
-            <h3 class="card-title">Blusa de lino terracota</h3>
-            <div class="card-cm-box">Busto: 98 cm ┊ Largo: 58 cm</div>
-            <div class="card-price-row">
-              <span class="card-price">S/. 65</span>
-              <span style="font-size: 0.85rem; color: var(--color-warm-gray);">Surco</span>
-            </div>
-          </div>
-        </article>
+        <!-- Banner de Suscripción -->
+        <div style="background-color: #2D372E; border-radius: 20px; padding: 3rem 2rem; text-align: center; color: #ffffff; margin-top: 3rem; margin-bottom: 2rem;">
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: #ffffff; margin-bottom: 0.75rem;">¿Quieres acceso anticipado al catálogo exclusivo?</h2>
+          <p style="font-size: 0.95rem; opacity: 0.9; margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">Registra tu correo y se la primera en recibir prendas exclusivas.</p>
 
-        <!-- Tarjeta 2: Jeans -->
-        <article class="garment-card">
-          <div class="garment-card-visual" style="cursor: pointer;" onclick="abrirModal('Jeans.jpg')">
-            <img src="Jeans.jpg" alt="Jean Levi's 501 Vintage" style="width: 100%; height: 180px; object-fit: cover;">
-          </div>
-          <div class="garment-card-body">
-            <h3 class="card-title">Jean Levi's 501 Vintage</h3>
-            <div class="card-cm-box">Cintura: 70 cm ┊ Cadera: 94 cm</div>
-            <div class="card-price-row">
-              <span class="card-price">S/. 95</span>
-              <span style="font-size: 0.85rem; color: var(--color-warm-gray);">Miraflores</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Tarjeta 3: Vestido -->
-        <article class="garment-card">
-          <div class="garment-card-visual" style="cursor: pointer;" onclick="abrirModal('Vestido.jpg')">
-            <img src="Vestido.jpg" alt="Vestido midi floral Mango" style="width: 100%; height: 180px; object-fit: cover;">
-          </div>
-          <div class="garment-card-body">
-            <h3 class="card-title">Vestido midi floral Mango</h3>
-            <div class="card-cm-box">Busto: 84 cm ┊ Cintura: 76 cm</div>
-            <div class="card-price-row">
-              <span class="card-price">S/. 85</span>
-              <span style="font-size: 0.85rem; color: var(--color-warm-gray);">San Isidro</span>
-            </div>
-          </div>
-        </article>
-      </div>
-          <form class="lead-form" id="buyerLeadForm">
+          <form id="buyerLeadForm">
             <input type="email" id="buyerEmail" class="lead-input" placeholder="Tu correo electrónico" required>
             <button type="submit" class="btn-submit">Quiero probar VUELTA</button>
           </form>
           <div id="buyerMsg" style="margin-top: 1.2rem; font-weight: 600; color: var(--color-salvia-light); display: none;"></div>
         </div>
+
       </div>
     </section>
-  </main>
 
   <footer class="site-footer">
     <div class="container">
