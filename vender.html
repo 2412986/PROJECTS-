@@ -48,16 +48,74 @@
     .seller-card-text { font-size: 0.88rem; color: var(--color-warm-gray); line-height: 1.45; }
 
     /* Form Section */
-    .lead-section { padding: 2rem 0 4rem; }
-    .cta-banner { background-color: var(--color-olive); border-radius: 20px; padding: 3rem 2rem; text-align: center; color: #ffffff; max-width: 650px; margin: 0 auto; }
-    .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: #ffffff; margin-bottom: 0.75rem; }
-    .cta-lead { font-size: 0.95rem; opacity: 0.9; margin-bottom: 2rem; }
-    
-    .form-group { margin-bottom: 1.25rem; text-align: left; }
-    .form-group label { display: block; font-size: 0.85rem; margin-bottom: 0.4rem; opacity: 0.9; font-weight: 500; }
-    .lead-input { width: 100%; padding: 0.85rem 1.25rem; border-radius: 10px; border: none; font-size: 0.95rem; outline: none; font-family: inherit; }
-    .btn-submit { width: 100%; background-color: var(--color-terracotta); color: #ffffff; border: none; padding: 0.95rem; border-radius: 10px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
-    .btn-submit:hover { background-color: #b35b40; }
+    .lead-section {
+  padding: 4rem 0;
+}
+
+.lead-box {
+  background-color: var(--color-olive-dark, #2c3528);
+  color: var(--color-cream, #f7f4ee);
+  border-radius: var(--radius-lg, 16px);
+  padding: 3rem 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.lead-box h2 {
+  color: var(--color-cream, #f7f4ee);
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.lead-box p {
+  color: var(--color-cream, #f7f4ee);
+  opacity: 0.9;
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.lead-input {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid transparent;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.lead-input:focus {
+  outline: none;
+  border-color: var(--color-salvia, #8a9a86);
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: var(--color-terracotta, #c86d51);
+  color: #FFF;
+  padding: 0.9rem 1.5rem;
+  border-radius: var(--radius-md, 8px);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-submit:hover {
+  background-color: var(--color-terracotta-hover, #b35c42);
+  transform: translateY(-1px);
+}
 
     /* Footer */
     .site-footer { padding: 2.5rem 0; text-align: center; border-top: 1px solid rgba(0,0,0,0.06); font-size: 0.85rem; color: var(--color-warm-gray); }
@@ -72,11 +130,6 @@
 <!-- End Google Tag Manager -->  
 </head>
 <body>
-
-  <!-- BANNER PROTOTIPO -->
-  <div class="prototype-banner">
-    PROTOTIPO ACADÉMICO SMOKE TEST — Captación de Oferta VUELTA en Lima Metropolitana.
-  </div>
 
   <!-- HEADER -->
   <header class="site-header">
@@ -150,67 +203,76 @@
     </section>
 
     <!-- FORMULARIO SELLER -->
-    <section class="lead-section" id="formulario-vender">
-      <div class="container">
-        <div class="cta-banner">
-          <h2>Darle una segunda VUELTA a tu clóset</h2>
-          <p class="cta-lead">Déjanos tus datos de contacto y te ayudaremos a publicar tus primeras 3 prendas.</p>
+    <!-- Sección Formulario Vendedora -->
+<!-- Sección Formulario Vendedora -->
+<section class="lead-section" id="formulario-vender">
+  <div class="container">
+    <div class="lead-box">
+      <h2>¿Quieres publicar tus prendas sin esfuerzo?</h2>
+      <p>Te damos acceso a la herramienta con IA que publica tus prendas por ti.</p>
 
-          <!-- Requerimiento 3: Formulario flexible -->
-          <form id="sellerLeadForm">
-            <div class="form-group">
-              <label for="sellerName">Tu Nombre</label>
-              <input type="text" id="sellerName" class="lead-input" placeholder="Ej. Camila Rodríguez" required>
-            </div>
-
-            <div class="form-group">
-              <label for="sellerEmail">Correo Electrónico <span style="font-size: 0.75rem; opacity: 0.7;">(opcional si dejas WhatsApp)</span></label>
-              <input type="email" id="sellerEmail" class="lead-input" placeholder="Ej. camila@gmail.com">
-            </div>
-
-            <div class="form-group">
-              <label for="sellerWhatsapp">Número de WhatsApp <span style="font-size: 0.75rem; opacity: 0.7;">(opcional si dejas Correo)</span></label>
-              <input type="tel" id="sellerWhatsapp" class="lead-input" placeholder="Ej. 987654321">
-            </div>
-
-            <div class="form-group">
-              <label for="sellerQuantity">¿Cuántas prendas te gustaría vender aproximadamente?</label>
-              <select id="sellerQuantity" class="lead-input" style="background-color: #fff; color: #333; cursor: pointer;">
-                <option value="1-5">De 1 a 5 prendas</option>
-                <option value="6-10">De 6 a 10 prendas</option>
-                <option value="10+">Más de 10 prendas</option>
-              </select>
-            </div>
-
-            <button type="submit" class="btn-submit">Solicitar contacto para vender</button>
-          </form>
-          <div id="sellerMsg" style="margin-top: 1.2rem; font-weight: 600; color: var(--color-salvia-light); display: none;"></div>
-        </div>
-      </div>
-    </section>
+      <form id="sellerLeadForm" class="lead-form">
+        <input 
+          type="text" 
+          id="sellerName" 
+          class="lead-input" 
+          placeholder="Tu nombre" 
+          required
+        >
+        <input 
+          type="email" 
+          id="sellerEmail" 
+          class="lead-input" 
+          placeholder="Tu correo electrónico" 
+          required
+        >
+        <button type="submit" class="btn-submit">Solicitar acceso</button>
+      </form>
+      
+      <div id="sellerMsg" style="margin-top: 1.2rem; font-weight: 600; color: #a4bfa0; display: none;"></div>
+    </div>
+  </div>
+</section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>© 2026 VUELTA — Captación de Oferta / Validación de Tesis en Lima Metropolitana.</p>
+      <p>© 2026 VUELTA</p>
     </div>
   </footer>
 
+<!-- Script Supabase Integrado -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    document.getElementById('sellerLeadForm').addEventListener('submit', function(e) {
+    const SUPABASE_URL = "https://hecbefeahljpvppetkvo.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhlY2JlZmVhaGxqcHZwZXRrdm8iLCJyb2xlIjoiYW5vbiIsImlhdCI6MTczMDM1NTQxMCwiZXhwIjoyMDQ1OTMxNDEwfQ.ej3uZ8MYSaajTKOyA7yEXSXOtzZINLZIJLIQe-8_LwQ";
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    document.getElementById('buyerLeadForm').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const email = document.getElementById('sellerEmail').value.trim();
-      const phone = document.getElementById('sellerWhatsapp').value.trim();
-      const msgDiv = document.getElementById('sellerMsg');
+      
+      const name = document.getElementById('buyerName').value.trim();
+      const email = document.getElementById('buyerEmail').value.trim();
+      const msg = document.getElementById('buyerMsg');
 
-      if (!email && !phone) {
-        alert('Por favor ingresa al menos un medio de contacto: tu correo electrónico o tu número de WhatsApp.');
-        return;
+      msg.style.display = "block";
+      msg.style.color = "#a4bfa0";
+      msg.textContent = "Enviando...";
+
+      try {
+        const { error } = await _supabase.from('leads').insert([
+          { user_type: 'compradora', name: name, contact_info: email }
+        ]);
+
+        if (error) throw error;
+
+        msg.textContent = "¡Gracias! Te avisaremos cuando publiquemos prendas de tu interés.";
+        document.getElementById('buyerLeadForm').reset();
+      } catch (err) {
+        console.error(err);
+        msg.style.color = "#e57373";
+        msg.textContent = "Ocurrió un error al enviar. Por favor intenta de nuevo.";
       }
-
-      msgDiv.innerText = '¡Gracias por registrarte! Nos pondremos en contacto contigo muy pronto.';
-      msgDiv.style.display = 'block';
-      this.reset();
     });
   </script>
 
