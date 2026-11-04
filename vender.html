@@ -242,39 +242,42 @@
   </footer>
 
 <!-- Script Supabase Integrado -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    const SUPABASE_URL = "https://hecbefeahljpvppetkvo.supabase.co";
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhlY2JlZmVhaGxqcHZwZXRrdm8iLCJyb2xlIjoiYW5vbiIsImlhdCI6MTczMDM1NTQxMCwiZXhwIjoyMDQ1OTMxNDEwfQ.ej3uZ8MYSaajTKOyA7yEXSXOtzZINLZIJLIQe-8_LwQ";
-    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = "https://hecbefeahljpvvpetkvo.supabase.co";
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhlY2JlZmVhaGxqcHZ2cGV0a3ZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMwNTQ1ODYsImV4cCI6MjEwODYzMDU4Nn0.ej3uZ8MYSAajTKOyA7yEXSXOTzZIhLZIJLiOlpAydpc";
+  const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    document.getElementById('buyerLeadForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const name = document.getElementById('buyerName').value.trim();
-      const email = document.getElementById('buyerEmail').value.trim();
-      const msg = document.getElementById('buyerMsg');
+  document.getElementById('sellerLeadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-      msg.style.display = "block";
+    const name = document.getElementById('sellerName').value.trim();
+    const email = document.getElementById('sellerEmail').value.trim();
+    const msg = document.getElementById('sellerMsg');
+
+    msg.style.display = "block";
+    msg.style.color = "#a4bfa0";
+    msg.textContent = "Enviando...";
+
+    try {
+      const { error } = await _supabase.from('leads').insert([
+        {
+          user_type: 'vendedora',
+          contact_info: `${name} (${email})`
+        }
+      ]);
+
+      if (error) throw error;
+
       msg.style.color = "#a4bfa0";
-      msg.textContent = "Enviando...";
-
-      try {
-        const { error } = await _supabase.from('leads').insert([
-          { user_type: 'compradora', name: name, contact_info: email }
-        ]);
-
-        if (error) throw error;
-
-        msg.textContent = "¡Gracias! Te avisaremos cuando publiquemos prendas de tu interés.";
-        document.getElementById('buyerLeadForm').reset();
-      } catch (err) {
-        console.error(err);
-        msg.style.color = "#e57373";
-        msg.textContent = "Ocurrió un error al enviar. Por favor intenta de nuevo.";
-      }
-    });
-  </script>
-
+      msg.textContent = "¡Gracias! Te contactaremos pronto para darte acceso.";
+      document.getElementById('sellerLeadForm').reset();
+    } catch (err) {
+      console.error("Error Supabase:", err);
+      msg.style.color = "#e57373";
+      msg.textContent = "Ocurrió un error al enviar. Por favor intenta de nuevo.";
+    }
+  });
+</script>
 </body>
 </html>
