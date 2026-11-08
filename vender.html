@@ -43,6 +43,9 @@
     .section-title { font-family: 'Playfair Display', serif; text-align: center; font-size: 2rem; color: var(--color-olive); margin-bottom: 2.5rem; }
     .seller-steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
     .seller-card { background: #fff; border-radius: 16px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.04); }
+    /* Tarjeta destacada de IA */
+    .seller-card-ai { position: relative; border: 2px solid var(--color-terracotta); box-shadow: 0 6px 20px rgba(200,109,81,0.15); }
+    .ai-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background-color: var(--color-terracotta); color: #fff; font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.8rem; border-radius: 20px; white-space: nowrap; letter-spacing: 0.3px; }
     .step-num { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background-color: var(--color-cream); color: var(--color-olive); font-weight: 700; border-radius: 50%; margin: 0 auto 1.25rem; font-size: 0.95rem; }
     .seller-card-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--color-olive); margin-bottom: 0.75rem; }
     .seller-card-text { font-size: 0.88rem; color: var(--color-warm-gray); line-height: 1.45; }
@@ -169,36 +172,44 @@
         
         <!-- Requerimiento 2: 4 Tarjetas -->
         <div class="seller-steps-grid">
-          
-          <!-- Paso 1 -->
-          <article class="seller-card">
-            <span class="step-num">1</span>
-            <h3 class="seller-card-title">Tasación Sugerida en Lima</h3>
-            <p class="seller-card-text">Te sugerimos un rango de precio justo según la marca, material y estado real de tu prenda.</p>
-          </article>
 
-          <!-- Paso 2 -->
-          <article class="seller-card">
-            <span class="step-num">2</span>
-            <h3 class="seller-card-title">Sin preguntas de medidas</h3>
-            <p class="seller-card-text">Guiamos la toma de centímetros clave (busto, cintura, cadera) para que la compradora no dude.</p>
-          </article>
+  <!-- Paso 1 -->
+  <article class="seller-card">
+    <span class="step-num">1</span>
+    <h3 class="seller-card-title">Tasación Sugerida en Lima</h3>
+    <p class="seller-card-text">Te sugerimos un rango de precio justo según la marca, material y estado real de tu prenda.</p>
+  </article>
 
-          <!-- Paso 3 (NUEVO) -->
-          <article class="seller-card">
-            <span class="step-num">3</span>
-            <h3 class="seller-card-title">Fotos y Ficha Optimizadas</h3>
-            <p class="seller-card-text">Facilitamos las descripciones de tus prendas y mejoramos la presentación visual de tus fotos en alta calidad.</p>
-          </article>
+  <!-- Paso 2 -->
+  <article class="seller-card">
+    <span class="step-num">2</span>
+    <h3 class="seller-card-title">Sin preguntas de medidas</h3>
+    <p class="seller-card-text">Guiamos la toma de centímetros clave (busto, cintura, cadera) para que la compradora no dude.</p>
+  </article>
 
-          <!-- Paso 4 -->
-          <article class="seller-card">
-            <span class="step-num">4</span>
-            <h3 class="seller-card-title">Coordinación por WhatsApp</h3>
-            <p class="seller-card-text">Te notificamos directamente cuando una compradora esté lista para solicitar tu prenda.</p>
-          </article>
+  <!-- Paso 3 (NUEVA: Herramienta IA) -->
+  <article class="seller-card seller-card-ai">
+    <span class="ai-badge">✨ Con IA</span>
+    <span class="step-num">3</span>
+    <h3 class="seller-card-title">Tu asistente de IA</h3>
+    <p class="seller-card-text">Nuestra herramienta con IA mejora las fotos de tus prendas y escribe las descripciones por ti, para que publiques en minutos.</p>
+  </article>
 
-        </div>
+  <!-- Paso 4 -->
+  <article class="seller-card">
+    <span class="step-num">4</span>
+    <h3 class="seller-card-title">Fotos y Ficha Optimizadas</h3>
+    <p class="seller-card-text">Facilitamos las descripciones de tus prendas y mejoramos la presentación visual de tus fotos en alta calidad.</p>
+  </article>
+
+  <!-- Paso 5 -->
+  <article class="seller-card">
+    <span class="step-num">5</span>
+    <h3 class="seller-card-title">Coordinación por WhatsApp</h3>
+    <p class="seller-card-text">Te notificamos directamente cuando una compradora esté lista para solicitar tu prenda.</p>
+  </article>
+
+</div>
       </div>
     </section>
 
