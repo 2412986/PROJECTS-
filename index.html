@@ -130,7 +130,7 @@ button { font-family: var(--font-sans); cursor: pointer; border: none; backgroun
   .tryon-visual { width: 100px; height: 100px; font-size: 3rem; }
 }
 /* --- Formulario Lead Uniformizado --- */
-.lead-section { padding: 4rem 0 2rem 0; }
+.lead-section { padding: 4rem 0 1rem 0; }
 .lead-box {
   background-color: var(--color-olive-dark, #2c3528);
   color: var(--color-cream, #f7f4ee);
@@ -189,14 +189,160 @@ button { font-family: var(--font-sans); cursor: pointer; border: none; backgroun
   background-color: var(--color-terracotta-hover, #b35c42);
   transform: translateY(-1px);
 }
+/* Rating de estado y vendedora en tarjetas de prendas */
+.card-rating-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+}
+.stars { color: #D4A373; }
+.rating-label { color: var(--color-warm-gray); font-size: 0.8rem; }
+
+.seller-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.6rem 0 0.9rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--color-border);
+  font-size: 0.8rem;
+}
+.seller-avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-salvia-light);
+  color: var(--color-olive-dark);
+  font-weight: 700;
+  font-size: 0.7rem;
+  border-radius: 50%;
+}
+.seller-name { color: var(--color-near-black); font-weight: 600; }
+.seller-score { margin-left: auto; color: var(--color-warm-gray); white-space: nowrap; }
+
+.card-location { font-size: 0.85rem; color: var(--color-warm-gray); }
+
+.demo-note {
+  text-align: center;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--color-warm-gray);
+  opacity: 0.85;
+}
+/* Tarjetas de características (compradoras) */
+.features-section { padding: 3rem 0 1rem; }
+.features-title {
+  text-align: center;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 2.5rem;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.feature-card {
+  position: relative;
+  background-color: var(--color-warm-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+.feature-card-ar { 
+  padding-top: calc(2rem - 1px); 
+  border: 2px solid var(--color-terracotta);
+  box-shadow: 0 6px 20px rgba(200, 117, 88, 0.15);
+}
+.feature-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-terracotta);
+  color: #FFF;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.8rem;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+.step-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 1.1rem;
+  background-color: var(--color-cream);
+  color: var(--color-olive-dark);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 50%;
+}
+.feature-card-title { font-size: 1.1rem; margin-bottom: 0.7rem; }
+.feature-card-text { font-size: 0.9rem; color: var(--color-warm-gray); line-height: 1.5; }
+
+/* Tablet: 2 columnas */
+@media (max-width: 1000px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+/* Celular: 1 columna */
+@media (max-width: 600px) {
+  .features-section { padding: 2rem 0 0.5rem; }
+  .features-grid { grid-template-columns: 1fr; gap: 1.6rem; }
+}
+
+/* Hero compradoras: responsive */
+.hero-title {
+  font-size: clamp(1.6rem, 5.5vw, 2.8rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-lead { font-size: clamp(1rem, 2.2vw, 1.15rem); }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+}
+.btn-hero-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--color-olive);
+  padding: 0.9rem 2rem;
+  border: 2px solid var(--color-olive);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+.btn-hero-secondary:hover {
+  background-color: var(--color-olive);
+  color: #FFF;
+}
+
 /* Ajustes para celular */
 @media (max-width: 700px) {
   .hero-buyer { padding: 2.5rem 0 2rem; }
-  .hero-title { font-size: 1.9rem; letter-spacing: -0.01em; }
-  .hero-lead { font-size: 1rem; }
   .tryon-title { font-size: 1.5rem; }
   .lead-box { padding: 2.5rem 1.25rem; }
   .lead-box h2 { font-size: 1.5rem; }
+}
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions a { text-align: center; }
 }
 </style>
 
@@ -224,100 +370,140 @@ gtag('js', new Date());
 
 <main>
   <section class="hero-buyer">
-    <div class="container">
-      <span class="badge-secondhand">ROPA DE SEGUNDA MANO · SELECCIÓN LIMA</span>
-      <h1 class="hero-title">Dale una segunda VUELTA a prendas únicas con su medida real y estado verificado</h1>
-      <p class="hero-lead">Compara el contorno de busto, cintura y cadera de cada prenda con tus medidas personales. Además, revisa la valoración real de su estado físico en estrellas antes de comprar. Sin sorpresas de talla ni de condición.</p>
-      <a href="#formulario-compradora" class="btn-hero-action">Quiero Prendas Exclusivas</a>
+  <div class="container">
+    <span class="badge-secondhand">OPCIÓN PARA COMPRADORAS · LIMA</span>
+    <h1 class="hero-title">Compra ropa de segunda mano en Lima con medidas reales y estado verificado</h1>
+    <p class="hero-lead">Compara el busto, la cintura y la cadera de cada prenda con tus medidas y revisa su estado en estrellas antes de comprar. Estamos por lanzar: únete a la lista VIP y sé la primera en acceder.</p>
+    <div class="hero-actions">
+      <a href="#formulario-compradora" class="btn-hero-action">Unirme a la lista VIP</a>
+      <a href="#catalogo" class="btn-hero-secondary">Ver prendas</a>
     </div>
-  </section>
+  </div>
+</section>
+<!-- CÓMO FUNCIONA (compradoras) -->
+<section class="features-section">
+  <div class="container">
+    <h2 class="features-title">¿Por qué comprar en VUELTA?</h2>
+    <div class="features-grid">
 
+      <article class="feature-card">
+        <span class="step-num">1</span>
+        <h3 class="feature-card-title">Medidas reales en cm</h3>
+        <p class="feature-card-text">Compara el busto, la cintura y la cadera de cada prenda con tus medidas antes de comprar.</p>
+      </article>
+
+      <article class="feature-card">
+        <span class="step-num">2</span>
+        <h3 class="feature-card-title">Estado verificado</h3>
+        <p class="feature-card-text">Cada prenda tiene una calificación en estrellas de su estado físico. Sin sorpresas de condición.</p>
+      </article>
+
+      <article class="feature-card feature-card-ar">
+        <span class="feature-badge">✨ Próximamente</span>
+        <span class="step-num">3</span>
+        <h3 class="feature-card-title">Probador virtual con realidad aumentada</h3>
+        <p class="feature-card-text">Mira cómo te queda cada prenda en tu cuerpo, según tus medidas. Menos dudas de talla.</p>
+      </article>
+
+      <article class="feature-card">
+        <span class="step-num">4</span>
+        <h3 class="feature-card-title">Prendas de Lima, trato directo</h3>
+        <p class="feature-card-text">Coordinamos contigo por WhatsApp para que recibas tu prenda sin complicaciones.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
   <section class="catalog-section" id="catalogo">
     <div class="container">
-      <!-- Tarjeta Probador Virtual (Realidad Aumentada) -->
-<div class="tryon-card">
-  <div class="tryon-content">
-    <span class="tryon-badge">✨ Nuevo · Realidad aumentada</span>
-    <h2 class="tryon-title">Pruébate las prendas antes de comprar</h2>
-    <p class="tryon-text">
-      Nuestro probador virtual con realidad aumentada te muestra cómo te queda cada prenda
-      en tu cuerpo, según tus medidas reales. Menos dudas de talla, más seguridad al comprar.
-    </p>
-    <a href="#formulario-compradora" class="tryon-btn">Quiero ser la primera en probarlo</a>
-  </div>
-  <div class="tryon-visual" aria-hidden="true">👗</div>
-</div>
-      <div class="garment-grid" style="margin-bottom: 3rem;">
-        
-        <!-- Tarjeta 1: Blusa -->
-        <article class="garment-card">
-          <div class="garment-card-visual" style="cursor: pointer;" onclick="abrirModal('Blusa.jpg')">
-            <img src="Blusa.jpg" alt="Blusa de lino terracota" style="width: 100%; height: 180px; object-fit: cover;">
-          </div>
-          <div class="garment-card-body">
-            <h3 class="card-title">Blusa de lino terracota</h3>
-            <div class="card-cm-box">Busto: 98 cm | Largo: 58 cm</div>
-            <div style="font-size: 0.85rem; color: var(--color-olive); margin: 0.5rem 0; display: flex; align-items: center; gap: 0.4rem;">
-              <span style="color: #D4A373;">★★★★☆</span>
-              <span style="color: var(--color-warm-gray); font-size: 0.8rem;">(Estado: Muy Bueno)</span>
-            </div>
-            <div class="card-price-row">
-              <span class="card-price">S/. 65</span>
-              <span style="font-size: 0.85rem; color: var(--color-warm-gray);">Surco</span>
-            </div>
-          </div>
-        </article>
+      <div class="garment-grid" style="margin-bottom: 1.2rem;">
 
-        <!-- Tarjeta 2: Jeans -->
-        <article class="garment-card">
-          <div class="garment-card-visual" style="cursor: pointer;" onclick="abrirModal('Jeans.jpg')">
-            <img src="Jeans.jpg" alt="Jean Levi's 501 Vintage" style="width: 100%; height: 180px; object-fit: cover;">
-          </div>
-          <div class="garment-card-body">
-            <h3 class="card-title">Jean Levi's 501 Vintage</h3>
-            <div class="card-cm-box">Cintura: 70 cm | Cadera: 94 cm</div>
-            <div style="font-size: 0.85rem; color: var(--color-olive); margin: 0.5rem 0; display: flex; align-items: center; gap: 0.4rem;">
-              <span style="color: #D4A373;">★★★★★</span>
-              <span style="color: var(--color-warm-gray); font-size: 0.8rem;">(Estado: Muy Bueno)</span>
-            </div>
-            <div class="card-price-row">
-              <span class="card-price">S/. 95</span>
-              <span style="font-size: 0.85rem; color: var(--color-warm-gray);">Miraflores</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Tarjeta 3: Vestido -->
-        <article class="garment-card">
-          <div class="garment-card-visual" style="cursor: pointer;" onclick="abrirModal('Vestido.jpg')">
-            <img src="Vestido.jpg" alt="Vestido midi floral Mango" style="width: 100%; height: 180px; object-fit: cover;">
-          </div>
-          <div class="garment-card-body">
-            <h3 class="card-title">Vestido midi floral Mango</h3>
-            <div class="card-cm-box">Busto: 84 cm | Cintura: 76 cm</div>
-            <div style="font-size: 0.85rem; color: var(--color-olive); margin: 0.5rem 0; display: flex; align-items: center; gap: 0.4rem;">
-              <span style="color: #D4A373;">★★★★★</span>
-              <span style="color: var(--color-warm-gray); font-size: 0.8rem;">(Estado: Muy Bueno)</span>
-            </div>
-            <div class="card-price-row">
-              <span class="card-price">S/. 85</span>
-              <span style="font-size: 0.85rem; color: var(--color-warm-gray);">San Isidro</span>
-            </div>
-          </div>
-        </article>
-
+  <!-- Tarjeta 1: Blusa -->
+  <article class="garment-card">
+    <div class="garment-card-visual" style="cursor: pointer;" onclick="abrirModal('Blusa.jpg')">
+      <img src="Blusa.jpg" alt="Blusa de lino terracota" style="width: 100%; height: 200px; object-fit: cover;">
+    </div>
+    <div class="garment-card-body">
+      <h3 class="card-title">Blusa de lino terracota</h3>
+      <div class="card-cm-box">Busto: 98 cm | Largo: 58 cm</div>
+      <div class="card-rating-row">
+        <span class="stars">★★★★☆</span>
+        <span class="rating-label">Estado: Muy Bueno</span>
       </div>
+      <div class="seller-row">
+        <span class="seller-avatar">C</span>
+        <span class="seller-name">Camila R.</span>
+        <span class="seller-score"><span class="stars">★</span> 4.9 · 18 ventas</span>
+      </div>
+      <div class="card-price-row">
+        <span class="card-price">S/. 65</span>
+        <span class="card-location">Surco</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Tarjeta 2: Jeans -->
+  <article class="garment-card">
+    <div class="garment-card-visual" style="cursor: pointer;" onclick="abrirModal('Jeans.jpg')">
+      <img src="Jeans.jpg" alt="Jean Levi's 501 Vintage" style="width: 100%; height: 200px; object-fit: cover;">
+    </div>
+    <div class="garment-card-body">
+      <h3 class="card-title">Jean Levi's 501 Vintage</h3>
+      <div class="card-cm-box">Cintura: 70 cm | Cadera: 94 cm</div>
+      <div class="card-rating-row">
+        <span class="stars">★★★★★</span>
+        <span class="rating-label">Estado: Muy Bueno</span>
+      </div>
+      <div class="seller-row">
+        <span class="seller-avatar">M</span>
+        <span class="seller-name">Mariana L.</span>
+        <span class="seller-score"><span class="stars">★</span> 4.8 · 31 ventas</span>
+      </div>
+      <div class="card-price-row">
+        <span class="card-price">S/. 95</span>
+        <span class="card-location">Miraflores</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Tarjeta 3: Vestido -->
+  <article class="garment-card">
+    <div class="garment-card-visual" style="cursor: pointer;" onclick="abrirModal('Vestido.jpg')">
+      <img src="Vestido.jpg" alt="Vestido midi floral Mango" style="width: 100%; height: 200px; object-fit: cover;">
+    </div>
+    <div class="garment-card-body">
+      <h3 class="card-title">Vestido midi floral Mango</h3>
+      <div class="card-cm-box">Busto: 84 cm | Cintura: 76 cm</div>
+      <div class="card-rating-row">
+        <span class="stars">★★★★★</span>
+        <span class="rating-label">Estado: Muy Bueno</span>
+      </div>
+      <div class="seller-row">
+        <span class="seller-avatar">V</span>
+        <span class="seller-name">Valeria P.</span>
+        <span class="seller-score"><span class="stars">★</span> 5.0 · 12 ventas</span>
+      </div>
+      <div class="card-price-row">
+        <span class="card-price">S/. 85</span>
+        <span class="card-location">San Isidro</span>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+<p class="demo-note">Prendas y calificaciones de ejemplo para mostrar cómo funcionará VUELTA.</p>
 
       <!-- Banner de Suscripción (Formulario Compradora Uniformizado) -->
       <section class="lead-section" id="formulario-compradora">
         <div class="lead-box">
-          <h2>Obtén 100% de DESCUENTO en tu primera compra</h2>
-          <p>Registra tu correo y sé la primera en usar nuestro probador virtual.</p>
+          <h2>Obtén 50% de descuento en tu primera compra</h2>
+          <p>Únete a la lista VIP y sé la primera en usar nuestro probador virtual.</p>
 
           <form id="buyerLeadForm" class="lead-form">
             <input type="text" id="buyerName" class="lead-input" placeholder="Tu nombre" required>
             <input type="email" id="buyerEmail" class="lead-input" placeholder="Tu correo electrónico" required>
-            <button type="submit" class="btn-submit">Quiero probar VUELTA</button>
+            <button type="submit" class="btn-submit">Unirme a la lista VIP</button>
           </form>
 
           <div id="buyerMsg" style="margin-top: 1.2rem; font-weight: 600; color: #a4bfa0; display: none;"></div>
@@ -363,7 +549,7 @@ gtag('js', new Date());
       if (error) throw error;
 
       msg.style.color = "#a4bfa0";
-      msg.textContent = "¡Gracias! Ya eres VIP, nos pondremos en contacto.";
+      msg.textContent = "¡Listo! Ya estás en la lista VIP. Te escribiremos al lanzar VUELTA con tu 50% de descuento.";
       document.getElementById('buyerLeadForm').reset();
     } catch (err) {
       console.error("Error Supabase:", err);
